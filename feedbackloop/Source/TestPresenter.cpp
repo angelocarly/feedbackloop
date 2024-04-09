@@ -94,7 +94,7 @@ feedbackloop::TestPresenter::~TestPresenter()
 }
 
 void
-feedbackloop::TestPresenter::Compute( vk::CommandBuffer inCommandBuffer ) const
+feedbackloop::TestPresenter::Compute( vk::CommandBuffer inCommandBuffer )
 {
     if( !mShouldCompute ) return;
 
@@ -170,7 +170,7 @@ feedbackloop::TestPresenter::Compute( vk::CommandBuffer inCommandBuffer ) const
 }
 
 void
-feedbackloop::TestPresenter::Present( vk::CommandBuffer inCommandBuffer ) const
+feedbackloop::TestPresenter::Present( vk::CommandBuffer inCommandBuffer )
 {
     return;
 }

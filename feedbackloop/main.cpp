@@ -34,6 +34,15 @@ class ExampleEngine
             mPresenter = std::make_shared< feedbackloop::TestPresenter >( GetPresentContext(), asset );
         }
 
+        void Compute( vk::CommandBuffer inCommandBuffer )
+        {
+            mPresenter->Compute( inCommandBuffer );
+        }
+        void Present( vk::CommandBuffer inCommandBuffer )
+        {
+            mPresenter->Present( inCommandBuffer );
+        }
+
         virtual void Update( float inDelta ) override
         {
             ImGui::BeginMainMenuBar();
@@ -64,12 +73,6 @@ class ExampleEngine
             if( mPresenter ) mPresenter->Update( inDelta );
         }
 
-        virtual burst::Presenter & GetPresenter() const override
-        {
-            if( mPresenter ) return ( burst::Presenter & ) * mPresenter;
-            return ( burst::Presenter & ) mEmptyPresenter;
-        }
-
     private:
         std::shared_ptr< feedbackloop::TestPresenter > mPresenter;
 
@@ -78,9 +81,9 @@ class ExampleEngine
             public burst::Presenter
         {
             public:
-                void Compute( vk::CommandBuffer inCommandBuffer ) const
+                void Compute( vk::CommandBuffer inCommandBuffer )
                 {}
-                void Present( vk::CommandBuffer inCommandBuffer ) const
+                void Present( vk::CommandBuffer inCommandBuffer )
                 {}
         } mEmptyPresenter;
 };

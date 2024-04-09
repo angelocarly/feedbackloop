@@ -26,8 +26,8 @@ namespace feedbackloop
             ~TestPresenter();
 
             void Update( float inDelta );
-            void Compute( vk::CommandBuffer inCommandBuffer ) const override;
-            void Present( vk::CommandBuffer inCommandBuffer ) const override;
+            void Compute( vk::CommandBuffer inCommandBuffer ) override;
+            void Present( vk::CommandBuffer inCommandBuffer ) override;
 
         private:
             void WriteImage( burst::ImageAsset inImage );
